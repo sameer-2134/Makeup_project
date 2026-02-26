@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Outfit:wght@300;400;600&display=swap');
+
+.aura-login-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fdfaf7; /* Cream Pearl base */
+  font-family: 'Outfit', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Background Soft Glow */
+.aura-bg-blur {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  filter: blur(50px);
+  z-index: 0;
+}
+
+.login-glass-card {
+  z-index: 1;
+  background: white;
+  padding: 50px 40px;
+  border-radius: 40px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  border: 1px solid #f0f0f0;
+}
+
+.studio-logo-ring {
+  width: 70px;
+  height: 70px;
+  border: 1px solid #d4af37;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.studio-icon { font-size: 2rem; }
+
+.login-header h2 {
+  font-family: 'Cinzel', serif;
+  color: #1a1a1a;
+  font-size: 1.8rem;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.login-header p {
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.login-form {
+  margin-top: 35px;
+  text-align: left;
+}
+
+.input-group { margin-bottom: 20px; }
+
+.input-group label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4A3728;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 16px;
+  border-radius: 15px;
+  border: 1.5px solid #eee;
+  background: #fafafa;
+  font-family: 'Outfit';
+  transition: 0.3s;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #d4af37;
+  background: white;
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.1);
+}
+
+.unlock-btn {
+  width: 100%;
+  padding: 18px;
+  background: #1a1a1a;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-weight: 600;
+  font-family: 'Cinzel', serif;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.4s;
+}
+
+.unlock-btn:hover {
+  background: #d4af37;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+}
+
+.error-text {
+  color: #d32f2f;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.login-footer {
+  margin-top: 30px;
+  font-size: 0.7rem;
+  color: #bbb;
+  letter-spacing: 2px;
+}
+
+/* Shake Animation for Wrong Password */
+.aura-shake {
+  animation: shake 0.5s ease-in-out;
+  border: 1px solid rgba(211, 47, 47, 0.3);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}

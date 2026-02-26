@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Outfit:wght@300;400;600&display=swap');
+
+.aura-form-wrapper {
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+}
+
+.aura-glass-form {
+  background: white;
+  width: 100%;
+  max-width: 800px;
+  padding: 50px;
+  border-radius: 40px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: 0.5s ease;
+}
+
+.aura-success-glow {
+  border-color: #d4af37;
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+}
+
+.aura-form-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.aura-symbol {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #d4af37;
+}
+
+.aura-form-header h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  color: #1a1a1a;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.aura-form-header p {
+  color: #888;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* Input Grid Styling */
+.aura-input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.full-row {
+  grid-column: span 2;
+}
+
+.aura-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.aura-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-left: 5px;
+}
+
+.aura-field input, 
+.aura-field select, 
+.aura-field textarea {
+  padding: 15px 20px;
+  border-radius: 16px;
+  border: 1.5px solid #eee;
+  background: #fafafa;
+  font-family: 'Outfit';
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.aura-field input:focus, 
+.aura-field select:focus, 
+.aura-field textarea:focus {
+  outline: none;
+  border-color: #d4af37;
+  background: white;
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.1);
+}
+
+/* Submit Button */
+.aura-submit-btn {
+  width: 100%;
+  margin-top: 40px;
+  padding: 18px;
+  background: #1a1a1a;
+  color: white;
+  border: none;
+  border-radius: 18px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.4s;
+  letter-spacing: 1px;
+  font-family: 'Cinzel', serif;
+}
+
+.aura-submit-btn:hover:not(:disabled) {
+  background: #d4af37;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+}
+
+.aura-submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Success Message */
+.aura-success-popup {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  color: #d4af37;
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translate(-50%, -20px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* --- Responsive Ness --- */
+@media (max-width: 768px) {
+  .aura-glass-form {
+    padding: 30px 20px;
+    border-radius: 25px;
+  }
+
+  .aura-input-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-row {
+    grid-column: span 1;
+  }
+
+  .aura-form-header h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .aura-form-wrapper {
+    padding: 20px 10px;
+  }
+  
+  .aura-submit-btn {
+    padding: 15px;
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Outfit:wght@300;400;600&display=swap');
+
+.aura-list-container {
+  padding: 40px 0;
+  font-family: 'Outfit', sans-serif;
+}
+
+.aura-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.header-title h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.header-title p { color: #888; font-size: 0.9rem; margin-top: 5px; }
+
+/* Controls Styling */
+.aura-controls {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.aura-search-bar {
+  position: relative;
+  background: white;
+  border-radius: 50px;
+  padding: 10px 20px 10px 45px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.aura-search-bar .icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+}
+
+.aura-search-bar input {
+  border: none;
+  outline: none;
+  font-family: 'Outfit';
+  width: 200px;
+}
+
+.aura-filter-tabs {
+  background: #f1f1f1;
+  padding: 5px;
+  border-radius: 50px;
+  display: flex;
+}
+
+.aura-filter-tabs button {
+  border: none;
+  padding: 8px 20px;
+  border-radius: 50px;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: 0.3s;
+  color: #666;
+}
+
+.aura-filter-tabs button.active {
+  background: white;
+  color: #d4af37;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* Grid & Cards */
+.aura-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.aura-booking-card {
+  background: white;
+  border-radius: 24px;
+  padding: 25px;
+  border: 1px solid #f0f0f0;
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.aura-booking-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.client-avatar-ring {
+  padding: 3px;
+  border: 1px solid #d4af37;
+  border-radius: 50%;
+}
+
+.client-initials {
+  width: 45px;
+  height: 45px;
+  background: #1a1a1a;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.status-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 50px;
+}
+
+.paid .status-label { background: #e8f5e9; color: #2e7d32; }
+.pending .status-label { background: #fff3e0; color: #ef6c00; }
+
+.client-name { font-family: 'Cinzel', serif; font-size: 1.4rem; margin: 0; }
+.service-name { color: #d4af37; font-weight: 600; margin: 8px 0; }
+.location-info, .notes-info { font-size: 0.85rem; color: #888; margin: 5px 0; }
+.notes-info { font-style: italic; background: #fafafa; padding: 10px; border-radius: 12px; }
+
+.card-bottom {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #f5f5f5;
+}
+
+.price-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.price { font-size: 1.3rem; font-weight: 600; color: #1a1a1a; }
+.date { font-size: 0.85rem; color: #999; }
+
+/* Action Buttons */
+.aura-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-toggle {
+  flex: 1;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-toggle.paid { background: #f1f1f1; color: #666; }
+.btn-toggle.pending { background: #1a1a1a; color: white; }
+
+.btn-toggle:hover { opacity: 0.8; }
+
+.btn-delete {
+  background: #fff0f0;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .aura-list-header { flex-direction: column; align-items: flex-start; }
+  .aura-search-bar input { width: 100%; }
+  .aura-cards-grid { grid-template-columns: 1fr; }
+}.details-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.btn-wa {
+  background: #e7fbe7;
+  color: #25d366;
+  border: 1px solid #25d366;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-wa:hover {
+  background: #25d366;
+  color: white;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 100px 20px;
+  background: white;
+  border-radius: 30px;
+  color: #888;
+  border: 2px dashed #f0f0f0;
+}
+
+/* Price Highlight */
+.price {
+  font-family: 'Outfit';
+  color: #d4af37;
+  letter-spacing: -0.5px;
+}
