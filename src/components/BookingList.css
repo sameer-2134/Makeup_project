@@ -232,4 +232,31 @@
   font-family: 'Outfit';
   color: #d4af37;
   letter-spacing: -0.5px;
+}/* In src/components/BookingList.css */
+
+.aura-search-bar {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #eee;
+    padding: 10px 15px; /* Sahi padding */
+    border-radius: 50px;
+}
+
+.aura-search-bar input {
+    color: #1a1a1a !important; /* Input text color black */
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 0.95rem;
+    padding-left: 10px; /* Icon se doori */
+}
+
+/* Mobile responsive fix specifically for search */
+@media (max-width: 768px) {
+    .aura-search-bar {
+        margin-bottom: 15px;
+        width: 100%;
+    }
 }

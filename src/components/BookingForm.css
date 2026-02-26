@@ -174,4 +174,20 @@
     padding: 15px;
     font-size: 1rem;
   }
+}/* In src/components/BookingForm.css */
+
+.aura-field input, 
+.aura-field select, 
+.aura-field textarea {
+    color: #1a1a1a !important; /* Text color ko dark black set kiya */
+    background: #ffffff !important; /* Background white rakha */
+    opacity: 1 !important;
+    -webkit-text-fill-color: #1a1a1a !important; /* Safari/iOS ke liye */
+}
+
+/* Placeholder color ko thoda light grey rakho */
+.aura-field input::placeholder, 
+.aura-field textarea::placeholder {
+    color: #888 !important;
+    -webkit-text-fill-color: #888 !important;
 }
