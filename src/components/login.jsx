@@ -4,24 +4,21 @@ import './Login.css';
 const Login = ({ onLoginSuccess }) => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
-  const [error, setError] = useState(false); // Boolean for animation trigger
+  const [error, setError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Admin Check Logic
     if (email === 'bhumi90@gmail.com' && pass === 'aura2026') {
       onLoginSuccess();
     } else {
       setError(true);
-      // Shake effect reset karne ke liye
       setTimeout(() => setError(false), 500);
     }
   };
 
   return (
     <div className="aura-login-page">
-      {/* Background elements for premium feel */}
       <div className="aura-bg-blur"></div>
       
       <div className={`login-glass-card ${error ? 'aura-shake' : ''}`}>
@@ -29,7 +26,7 @@ const Login = ({ onLoginSuccess }) => {
           <div className="studio-logo-ring">
             <span className="studio-icon">💄</span>
           </div>
-          <h2>Bhumi Aura Craft</h2>
+          <h2> Aura Craft</h2>
           <p>Artist Administration Access</p>
         </div>
 
@@ -38,7 +35,7 @@ const Login = ({ onLoginSuccess }) => {
             <label>Admin Email</label>
             <input 
               type="email" 
-              placeholder="bhumi90@gmail.com" 
+              placeholder="Auracraft@gmail.com" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required 

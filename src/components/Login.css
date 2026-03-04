@@ -6,13 +6,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fdfaf7; /* Cream Pearl base */
+  background: #fdfaf7;
   font-family: 'Outfit', sans-serif;
   overflow: hidden;
   position: relative;
 }
 
-/* Background Soft Glow */
 .aura-bg-blur {
   position: absolute;
   width: 500px;
@@ -130,7 +129,6 @@
   letter-spacing: 2px;
 }
 
-/* Shake Animation for Wrong Password */
 .aura-shake {
   animation: shake 0.5s ease-in-out;
   border: 1px solid rgba(211, 47, 47, 0.3);

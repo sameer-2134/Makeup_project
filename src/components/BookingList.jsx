@@ -12,10 +12,13 @@ const BookingList = ({ bookings = [], onUpdateStatus, onDeleteBooking }) => {
   };
 
   const formatCurrency = (num) => {
-    return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(num);
+    return new Intl.NumberFormat('en-IN', { 
+      style: 'currency', 
+      currency: 'INR', 
+      maximumFractionDigits: 0 
+    }).format(num);
   };
 
-  // Logic: Search + Filter
   const filteredBookings = useMemo(() => {
     return bookings.filter(b => 
       (b.client.toLowerCase().includes(searchTerm.toLowerCase()) || 
@@ -24,9 +27,8 @@ const BookingList = ({ bookings = [], onUpdateStatus, onDeleteBooking }) => {
     );
   }, [bookings, searchTerm, statusFilter]);
 
-  // Workflow: Direct WhatsApp Link
   const sendWhatsApp = (booking) => {
-    const phone = booking.phone || ""; // Make sure your form collects phone
+    const phone = booking.phone || "";
     const msg = `Hi ${booking.client}, this is Bhumi Aura Craft. Just confirming your ${booking.service} session for ${formatDate(booking.date)}. ✨`;
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
   };
@@ -80,7 +82,6 @@ const BookingList = ({ bookings = [], onUpdateStatus, onDeleteBooking }) => {
                 <p className="service-name">✨ {booking.service}</p>
                 <div className="details-row">
                     <p className="location-info">📍 {booking.location || 'Studio'}</p>
-                    {/* Add WhatsApp Trigger here */}
                     <button className="btn-wa" onClick={() => sendWhatsApp(booking)}>📱 WhatsApp</button>
                 </div>
                 {booking.notes && <p className="notes-info">“{booking.notes}”</p>}

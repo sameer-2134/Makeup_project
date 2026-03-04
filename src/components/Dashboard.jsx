@@ -4,7 +4,6 @@ import './Dashboard.css';
 const Dashboard = ({ bookings = [] }) => {
   const [filter, setFilter] = useState('all');
 
-  // Stats Logic: Efficiency ke liye reduce ka use kiya hai
   const stats = useMemo(() => {
     const filtered = filter === 'all' 
       ? bookings 
@@ -17,7 +16,6 @@ const Dashboard = ({ bookings = [] }) => {
     }, { paid: 0, pending: 0, count: filtered.length });
   }, [bookings, filter]);
 
-  // Upcoming Logic: Today aur Future ki bookings
   const upcomingBookings = useMemo(() => {
     const today = new Date().setHours(0, 0, 0, 0);
     return bookings
@@ -39,14 +37,12 @@ const Dashboard = ({ bookings = [] }) => {
 
   return (
     <div className="aura-dashboard">
-      {/* Brand Hero - Bhumi's Identity */}
       <div className="aura-hero">
         <div className="brand-badge">EST. 2024</div>
         <h1 className="brand-name">Bhumi Aura Craft</h1>
         <p className="brand-tagline">Crafting Elegance, One Stroke at a Time ✨</p>
       </div>
 
-      {/* Analytics Section */}
       <div className="stats-header-row">
         <h3>Revenue Insights</h3>
         <select className="aura-select" value={filter} onChange={(e) => setFilter(e.target.value)}>
@@ -77,7 +73,6 @@ const Dashboard = ({ bookings = [] }) => {
       </div>
 
       <div className="aura-layout-split">
-        {/* Left: Upcoming (Focus) */}
         <div className="aura-column">
           <div className="column-header">
             <h3>Upcoming Focus</h3>
@@ -104,7 +99,6 @@ const Dashboard = ({ bookings = [] }) => {
           </div>
         </div>
 
-        {/* Right: History (Recent) */}
         <div className="aura-column">
           <div className="column-header">
             <h3>Recent Activity</h3>

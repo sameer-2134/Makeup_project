@@ -4,7 +4,7 @@ import './BookingForm.css';
 const BookingForm = ({ onAddBooking }) => {
   const [formData, setFormData] = useState({
     client: '',
-    phone: '', // Naya Field WhatsApp ke liye
+    phone: '',
     date: new Date().toISOString().split('T')[0],
     service: '',
     amount: '',
@@ -23,15 +23,13 @@ const BookingForm = ({ onAddBooking }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Validation: Phone check
     if(formData.phone.length < 10) {
-        alert("Bhai, valid phone number toh daal do! WhatsApp kaise bhejoge?");
+        alert("Please enter a valid 10-digit phone number.");
         return;
     }
 
     setIsSubmitting(true);
 
-    // Aura Processing Effect
     setTimeout(() => {
       const newBooking = {
         ...formData,
@@ -46,7 +44,6 @@ const BookingForm = ({ onAddBooking }) => {
       setShowSuccess(true);
       setIsSubmitting(false);
       
-      // Form Reset
       setFormData({ 
         client: '', 
         phone: '',
@@ -58,7 +55,7 @@ const BookingForm = ({ onAddBooking }) => {
       });
 
       setTimeout(() => setShowSuccess(false), 3000);
-    }, 1200); // Thoda zyada delay for 'Premium' feel
+    }, 1200);
   };
 
   return (
@@ -72,7 +69,6 @@ const BookingForm = ({ onAddBooking }) => {
 
         <form onSubmit={handleSubmit} className="aura-main-form">
           <div className="aura-input-grid">
-            
             <div className="aura-field">
               <label>Client Identity</label>
               <input 
@@ -90,7 +86,7 @@ const BookingForm = ({ onAddBooking }) => {
               <input 
                 type="tel" 
                 name="phone" 
-                placeholder="WhatsApp Number (10 digits)"
+                placeholder="WhatsApp Number"
                 value={formData.phone} 
                 onChange={handleChange} 
                 maxLength="10"
@@ -149,7 +145,7 @@ const BookingForm = ({ onAddBooking }) => {
               <label>Special Notes & Requests</label>
               <textarea 
                 name="notes" 
-                placeholder="Any specific requests or skin type details..."
+                placeholder="Any specific requests..."
                 value={formData.notes} 
                 onChange={handleChange} 
                 rows="2"

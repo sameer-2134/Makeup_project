@@ -49,7 +49,6 @@
   margin-top: 10px;
 }
 
-/* Input Grid Styling */
 .aura-input-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -81,10 +80,12 @@
   padding: 15px 20px;
   border-radius: 16px;
   border: 1.5px solid #eee;
-  background: #fafafa;
+  background: #ffffff;
   font-family: 'Outfit';
   font-size: 1rem;
+  color: #1a1a1a;
   transition: 0.3s;
+  -webkit-text-fill-color: #1a1a1a;
 }
 
 .aura-field input:focus, 
@@ -92,11 +93,15 @@
 .aura-field textarea:focus {
   outline: none;
   border-color: #d4af37;
-  background: white;
   box-shadow: 0 8px 20px rgba(212, 175, 55, 0.1);
 }
 
-/* Submit Button */
+.aura-field input::placeholder, 
+.aura-field textarea::placeholder {
+  color: #888;
+  -webkit-text-fill-color: #888;
+}
+
 .aura-submit-btn {
   width: 100%;
   margin-top: 40px;
@@ -124,7 +129,6 @@
   cursor: not-allowed;
 }
 
-/* Success Message */
 .aura-success-popup {
   position: absolute;
   top: -20px;
@@ -145,21 +149,17 @@
   to { transform: translate(-50%, 0); opacity: 1; }
 }
 
-/* --- Responsive Ness --- */
 @media (max-width: 768px) {
   .aura-glass-form {
     padding: 30px 20px;
     border-radius: 25px;
   }
-
   .aura-input-grid {
     grid-template-columns: 1fr;
   }
-
   .full-row {
     grid-column: span 1;
   }
-
   .aura-form-header h2 {
     font-size: 1.6rem;
   }
@@ -169,25 +169,8 @@
   .aura-form-wrapper {
     padding: 20px 10px;
   }
-  
   .aura-submit-btn {
     padding: 15px;
     font-size: 1rem;
   }
-}/* In src/components/BookingForm.css */
-
-.aura-field input, 
-.aura-field select, 
-.aura-field textarea {
-    color: #1a1a1a !important; /* Text color ko dark black set kiya */
-    background: #ffffff !important; /* Background white rakha */
-    opacity: 1 !important;
-    -webkit-text-fill-color: #1a1a1a !important; /* Safari/iOS ke liye */
-}
-
-/* Placeholder color ko thoda light grey rakho */
-.aura-field input::placeholder, 
-.aura-field textarea::placeholder {
-    color: #888 !important;
-    -webkit-text-fill-color: #888 !important;
 }

@@ -2,41 +2,59 @@ import React, { useState, useEffect } from 'react';
 import Dashboard from './components/Dashboard';
 import BookingForm from './components/BookingForm';
 import BookingList from './components/BookingList';
+import Login from './components/Login';
+import { db } from './firebase';
+import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, orderBy, onSnapshot } from "firebase/firestore";
 import './App.css';
 
 function App() {
-  const [activeTab, setActiveTab] = useState('dashboard');
-  const [bookings, setBookings] = useState(() => {
-    const savedBookings = localStorage.getItem('makeup_bookings');
-    return savedBookings ? JSON.parse(savedBookings) : [];
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    return localStorage.getItem('aura_logged_in') === 'true';
   });
+  const [activeTab, setActiveTab] = useState('dashboard');
+  const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem('makeup_bookings', JSON.stringify(bookings));
-  }, [bookings]);
+    if (isLoggedIn) {
+      const q = query(collection(db, "bookings"), orderBy("date", "desc"));
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const data = querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+        setBookings(data);
+      });
+      return () => unsubscribe();
+    }
+  }, [isLoggedIn]);
 
-  const handleAddBooking = (newBooking) => {
-    setBookings(prevBookings => [newBooking, ...prevBookings]);
-    setActiveTab('list'); 
+  const handleLoginSuccess = () => {
+    localStorage.setItem('aura_logged_in', 'true');
+    setIsLoggedIn(true);
   };
 
-  const handleUpdateStatus = (updatedBooking) => {
-    setBookings(prevBookings =>
-      prevBookings.map(booking =>
-        booking.id === updatedBooking.id ? updatedBooking : booking
-      )
-    );
+  const handleLogout = () => {
+    localStorage.removeItem('aura_logged_in');
+    setIsLoggedIn(false);
   };
 
-  const handleDeleteBooking = (id) => {
-    setBookings(prevBookings =>
-      prevBookings.filter(booking => booking.id !== id)
-    );
+  const handleAddBooking = async (newBooking) => {
+    await addDoc(collection(db, "bookings"), newBooking);
+    setActiveTab('list');
   };
+
+  const handleUpdateStatus = async (updatedBooking) => {
+    const bookingRef = doc(db, "bookings", updatedBooking.id);
+    await updateDoc(bookingRef, { status: updatedBooking.status });
+  };
+
+  const handleDeleteBooking = async (id) => {
+    await deleteDoc(doc(db, "bookings", id));
+  };
+
+  if (!isLoggedIn) {
+    return <Login onLoginSuccess={handleLoginSuccess} />;
+  }
 
   return (
     <div className="aura-app-container">
-      {/* Desktop Sidebar & Mobile Bottom Nav */}
       <nav className="aura-navigation">
         <div className="aura-logo-container">
           <span className="aura-logo-icon">💄</span>
@@ -58,10 +76,14 @@ function App() {
             <span className="nav-icon">📋</span> 
             <span className="nav-label">Ledger</span>
           </button>
+
+          <button className="nav-item logout" onClick={handleLogout}>
+            <span className="nav-icon">🚪</span> 
+            <span className="nav-label">Logout</span>
+          </button>
         </div>
       </nav>
 
-      {/* Main Content Container */}
       <main className="aura-content-area">
         <header className="aura-header">
           <div className="aura-status">
@@ -87,8 +109,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-// Toh humein ismein Firebase ya Supabase (Database) connect karna padega.
